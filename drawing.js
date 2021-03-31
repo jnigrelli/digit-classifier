@@ -5,14 +5,29 @@ let lastX, lastY;
 let drawingMode = false;
 let w;
 let h;
-let lineThickness = 2;
+let lineThickness = 10;
+
+let smallCanvas;
+let smallContext;
+let smallW;
+let smallH;
+
+let scale;
 
 function init() {
     canvas = document.getElementById("drawing-canvas");
     ctx = canvas.getContext("2d");
 
+    smallCanvas = document.getElementById("eval-canvas");
+    smallContext = smallCanvas.getContext("2d");
+
     w = canvas.width;
     h = canvas.height;
+
+    smallW = smallCanvas.width;
+    smallH = smallCanvas.height;
+
+    scale = smallW/smallH;
 
     ctx.fillStyle = "#000000";
     ctx.strokeStyle = "#000000";
@@ -82,4 +97,11 @@ function clearCanvas() {
     ctx.clearRect(0,0,w,h);
     ctx.stroke();
     console.log("clearing");
+}
+
+function downscale() {
+    smallContext.clearRect(0,0,smallW,smallH);
+    smallContext.scale(scale, scale);
+    smallContext.drawImage(canvas, 0, 0, smallW, smallH);
+
 }

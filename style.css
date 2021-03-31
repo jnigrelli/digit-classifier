@@ -1,5 +1,13 @@
 #drawing-canvas {
     width: 28;
     height: 28;
+}
+
+
+canvas {
     border: 1px solid black;
+}
+
+#eval-canvas {
+    display: none;
 }

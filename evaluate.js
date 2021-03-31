@@ -1,7 +1,7 @@
 function eval_from_canvas() {
     //console.log("test")
 
-    let canvas = document.getElementById("drawing-canvas");
+    let canvas = document.getElementById("eval-canvas");
     let ctx = canvas.getContext("2d");
 
     let w = canvas.width;
