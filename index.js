@@ -2,12 +2,11 @@ let model;
 
 async function getModel() {
     model = await tf.loadLayersModel('https://jnigrelli.github.io/digit-classifier/model/model.json');
-    model.summary();
 }
 
 
 async function predict() {
-    document.getElementById("prediction").innerHTML = "Predicting..."
+    document.getElementById("prediction").innerHTML = "Predicting...";
 
     getModel().then(() => {
         let input = eval_from_canvas()
