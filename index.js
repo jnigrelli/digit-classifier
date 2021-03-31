@@ -7,7 +7,7 @@ async function getModel() {
 
 
 async function predict() {
-    
+    document.getElementById("prediction").innerHTML = "Predicting..."
 
     getModel().then(() => {
         let input = eval_from_canvas()
