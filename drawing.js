@@ -102,7 +102,7 @@ function draw(c, event) {
     [lastX, lastY] = [x,y];
     [x, y] = getCursorCoords(c, event);
     
-    console.log("X: " + x + ", Y: " + y);
+    //console.log("X: " + x + ", Y: " + y);
 
     ctx.beginPath();
     ctx.lineWidth = lineThickness.toString();
@@ -132,7 +132,7 @@ function clearCanvas() {
     ctx.beginPath();
     ctx.clearRect(0,0,w,h);
     ctx.stroke();
-    console.log("clearing");
+    //console.log("clearing");
 }
 
 function downscale() {

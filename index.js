@@ -11,12 +11,11 @@ async function predict() {
     getModel().then(() => {
         let input = eval_from_canvas()
         let p = model.predict(input);
-        p.print();
+        //p.print();
 
         let value = p.argMax(1).dataSync();
         document.getElementById("prediction").innerHTML = value;
     });
-
 }
 
 getModel();
