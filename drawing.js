@@ -49,7 +49,7 @@ function init() {
         disableDraw(canvas, e);
     });
 
-    //mobile event listeners???
+    //mobile event listeners
     canvas.addEventListener("touchstart", function(e) {
         e.preventDefault();
         mousePos = getTouchCoords(canvas, e);
@@ -101,8 +101,6 @@ function draw(c, event) {
 
     [lastX, lastY] = [x,y];
     [x, y] = getCursorCoords(c, event);
-    
-    //console.log("X: " + x + ", Y: " + y);
 
     ctx.beginPath();
     ctx.lineWidth = lineThickness.toString();
@@ -132,7 +130,6 @@ function clearCanvas() {
     ctx.beginPath();
     ctx.clearRect(0,0,w,h);
     ctx.stroke();
-    //console.log("clearing");
 }
 
 function downscale() {
