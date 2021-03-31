@@ -3,14 +3,12 @@ let ctx;
 let x, y;
 let lastX, lastY;
 let drawingMode = false;
-let w;
-let h;
+let dim;
 let lineThickness = 10;
 
 let smallCanvas;
 let smallContext;
-let smallW;
-let smallH;
+let smallDim;
 
 let scale;
 
@@ -21,13 +19,11 @@ function init() {
     smallCanvas = document.getElementById("eval-canvas");
     smallContext = smallCanvas.getContext("2d");
 
-    w = canvas.width;
-    h = canvas.height;
+    dim = canvas.height;
 
-    smallW = smallCanvas.width;
-    smallH = smallCanvas.height;
+    smallDim = smallCanvas.height;
 
-    scale = smallW/smallH;
+    scale = 1;
 
     ctx.fillStyle = "#000000";
     ctx.strokeStyle = "#000000";
@@ -83,7 +79,6 @@ function getCursorCoords(c, event) {
     let cursorX = event.clientX - rect.left;
     let cursorY = event.clientY - rect.top;
 
-    
     return [cursorX, cursorY];
 }
 
@@ -98,10 +93,8 @@ function getTouchCoords(c, event) {
 
 function draw(c, event) {
     if (!drawingMode) {return;}
-
     [lastX, lastY] = [x,y];
     [x, y] = getCursorCoords(c, event);
-
     ctx.beginPath();
     ctx.lineWidth = lineThickness.toString();
     ctx.moveTo(lastX, lastY);
@@ -112,9 +105,7 @@ function draw(c, event) {
 function enableDraw(c, event) {
     [x, y] = getCursorCoords(c, event);
     drawingMode = true;
-
     draw(c,event);
-
     ctx.beginPath();
     ctx.fillStyle = "#000000";
     ctx.arc(100, 75, 50, 0, 2 * Math.PI);
@@ -126,15 +117,11 @@ function disableDraw(c, event) {
 }
 
 function clearCanvas() {
-    ctx.fillStyle = "#FFFFFF";
-    ctx.beginPath();
-    ctx.clearRect(0,0,w,h);
-    ctx.stroke();
+    ctx.clearRect(0,0,dim,dim);
 }
 
 function downscale() {
-    smallContext.clearRect(0,0,smallW,smallH);
+    smallContext.clearRect(0,0,smallDim,smallDim);
     smallContext.scale(scale, scale);
-    smallContext.drawImage(canvas, 0, 0, smallW, smallH);
-
+    smallContext.drawImage(canvas, 0, 0, smallDim, smallDim);
 }
