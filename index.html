@@ -1,10 +1,28 @@
-<html>
-  <head>
-    <title>
-      Test
-    </title>
-  </head>
-  <body>
-    <h1>test</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digit Classifier</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="drawing.js"></script>
+
+</head>
+<body onload="init()">
+    <h1>Simple Digit Classifier</h1>
+
+
+    <canvas id="drawing-canvas" width="28" height="28">
+
+    </canvas>
+
+    <button type="button" id="submit" onclick="predict();">Click to submit</button>
+    <button type="button" id="clear" onclick="clearCanvas();">Clear Canvas</button>
+    <p>Prediction: <span id="prediction">N/A</span></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="evaluate.js"></script>
+    
+    <script src="index.js"></script>
+</body>
 </html>
