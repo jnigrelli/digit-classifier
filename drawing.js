@@ -48,6 +48,34 @@ function init() {
     canvas.addEventListener("mouseout", function(e) {
         disableDraw(canvas, e);
     });
+
+    //mobile event listeners???
+    canvas.addEventListener("touchstart", function(e) {
+        e.preventDefault();
+        mousePos = getTouchCoords(canvas, e);
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent("mousedown", {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+    });
+
+    canvas.addEventListener("touchend", function(e) {
+        e.preventDefault();
+        var mouseEvent = new MouseEvent("mouseup", {});
+        canvas.dispatchEvent(mouseEvent);
+    });
+
+    canvas.addEventListener("touchmove", function(e) {
+        e.preventDefault();
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent("mousemove", {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+    });
 }
 
 function getCursorCoords(c, event) {
@@ -57,6 +85,14 @@ function getCursorCoords(c, event) {
 
     
     return [cursorX, cursorY];
+}
+
+function getTouchCoords(c, event) {
+    const rect = c.getBoundingClientRect();
+    return {
+        x: event.touches[0].clientX - rect.left,
+        y: event.touches[0].clientY - rect.top
+    };
 }
 
 
