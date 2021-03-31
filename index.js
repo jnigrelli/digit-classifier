@@ -12,10 +12,9 @@ async function predict() {
         let input = eval_from_canvas()
         let p = model.predict(input);
         p.print();
-        p.argMax(1).print();
 
-        //TODO this outputs "Tensor[n]" atm so change this
-        document.getElementById("prediction").innerHTML = p.argMax(1).toString();
+        let value = p.argMax(1).dataSync();
+        document.getElementById("prediction").innerHTML = value;
     });
 
 }

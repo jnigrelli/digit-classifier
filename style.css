@@ -1,6 +1,10 @@
 #drawing-canvas {
-    width: 28;
-    height: 28;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
 }
 
 
@@ -10,4 +14,9 @@ canvas {
 
 #eval-canvas {
     display: none;
+}
+
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
