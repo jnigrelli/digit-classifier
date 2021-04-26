@@ -12,6 +12,8 @@ let smallDim;
 
 let scale;
 
+let slider;
+
 function init() {
     canvas = document.getElementById("drawing-canvas");
     ctx = canvas.getContext("2d");
@@ -24,6 +26,12 @@ function init() {
     smallDim = smallCanvas.height;
 
     scale = 1;
+
+    slider = document.getElementById("thickness-slider");
+    slider.oninput = function () {
+        lineThickness = this.value;
+        document.getElementById("current-thickness").innerHTML = this.value;
+    }
 
     ctx.fillStyle = "#000000";
     ctx.strokeStyle = "#000000";

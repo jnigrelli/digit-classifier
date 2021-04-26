@@ -20,7 +20,10 @@
     <button type="button" id="submit" onclick="predict();">Click to submit</button>
     <button type="button" id="clear" onclick="clearCanvas();">Clear Canvas</button>
     <p>Prediction: <span id="prediction">N/A</span></p>
-
+    <div id="">
+        <label for="thickness-slider">Line thickness: <span id="current-thickness">10</span>px</label>
+        <input type="range" min="10" max="35" value="10" class="" id="thickness-slider">
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script src="evaluate.js"></script>
     
